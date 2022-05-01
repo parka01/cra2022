@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom'
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
+import UseRefExample from './UseRefExample';
 const Hello = (props) => {
   return (
     <div>
@@ -7,19 +8,19 @@ const Hello = (props) => {
         Hello world {props.name}, you are {props.age} years old
       </p>
     </div>
-  )
-}
+  );
+};
 const Footer = () => {
   return (
     <div>
       <b>
-        CRA2022 App created by <a href='https://github.com/parka01'>Me!</a>
+        CRA2022 App created by <a href="https://github.com/parka01">Me!</a>
       </b>
     </div>
-  )
-}
+  );
+};
 const Header = (props) => {
-  console.log('props', props)
+  console.log('props', props);
   return (
     <span
       style={{
@@ -30,26 +31,26 @@ const Header = (props) => {
     >
       {props.course}
     </span>
-  )
-}
+  );
+};
 const Content = (props) => {
-  console.log('content props: ', props)
+  console.log('content props: ', props);
   return (
     <>
       <Part part={props.part1} exercises={props.exercises1} />
       <Part part={props.part2} exercises={props.exercises2} />
       <Part part={props.part3} exercises={props.exercises3} />
     </>
-  )
-}
+  );
+};
 const Part = (props) => {
   return (
     <p>
       {props.part}
       {props.exercises}
     </p>
-  )
-}
+  );
+};
 const Total = (props) => {
   return (
     <div>
@@ -58,37 +59,37 @@ const Total = (props) => {
         {props.exercises1 + props.exercises2 + props.exercises3}
       </p>
     </div>
-  )
-}
+  );
+};
 // constants for Router
 const Home = () => (
   <div>
     <h2>Main Home</h2>
   </div>
-)
+);
 const Notes = () => (
   <div>
     <h2>Notes</h2>
   </div>
-)
+);
 const Users = () => (
   <div>
     <h2>Users </h2>
   </div>
-)
+);
 const App = () => {
-  const now = new Date()
-  const a = 10
-  const b = 20
-  const name = 'Pete'
-  const age = 10
-  const course = 'Half Stack application development'
-  const part1 = 'Fundamentals of React'
-  const exercises1 = 10
-  const part2 = 'Using props to pass data'
-  const exercises2 = 7
-  const part3 = 'State of a component'
-  const exercises3 = 14
+  const now = new Date();
+  const a = 10;
+  const b = 20;
+  const name = 'Pete';
+  const age = 10;
+  const course = 'Half Stack application development';
+  const part1 = 'Fundamentals of React';
+  const exercises1 = 10;
+  const part2 = 'Using props to pass data';
+  const exercises2 = 7;
+  const part3 = 'State of a component';
+  const exercises3 = 14;
   // const x = 1
   // let y = 5
   // console.log(x, y)
@@ -96,43 +97,43 @@ const App = () => {
   // console.log(x, y)
   // y = 'text'
   // console.log(x, y)
-  const t = [1, -1, 3]
-  t.push(5)
-  console.log('t.length', t.length)
-  console.log('t[1]', t[1])
-  t.forEach((value) => console.log(value))
-  console.log('t'.t)
-  const t2 = t.concat(100)
-  console.log('t2', t2)
-  const tTestMap = [1, 2, 3]
-  const tTestMapResult = tTestMap.map((value) => <li> {value} </li>)
-  console.log('tests', tTestMapResult)
+  const t = [1, -1, 3];
+  t.push(5);
+  console.log('t.length', t.length);
+  console.log('t[1]', t[1]);
+  t.forEach((value) => console.log(value));
+  console.log('t'.t);
+  const t2 = t.concat(100);
+  console.log('t2', t2);
+  const tTestMap = [1, 2, 3];
+  const tTestMapResult = tTestMap.map((value) => <li> {value} </li>);
+  console.log('tests', tTestMapResult);
 
-  const destructuring = [1, 2, 3, 4, 5, 6, 7]
-  const [seed, sprout, ...flowers] = destructuring
+  const destructuring = [1, 2, 3, 4, 5, 6, 7];
+  const [seed, sprout, ...flowers] = destructuring;
   //seed,sprout receive the first two integers as their values
   //the remaining integers are collected into an array by itself. then assigned to the variable(*flowers)
 
-  console.log('destructuring: ', seed, sprout)
-  console.log('destructuring: ', flowers)
-  const testArray = [1, 2, 3]
-  const arrayWithFunction = testArray.map((value) => value * value)
-  console.log('arrayWithFunction', arrayWithFunction)
+  console.log('destructuring: ', seed, sprout);
+  console.log('destructuring: ', flowers);
+  const testArray = [1, 2, 3];
+  const arrayWithFunction = testArray.map((value) => value * value);
+  console.log('arrayWithFunction', arrayWithFunction);
 
   function sameThing(a, b) {
-    return a * b
+    return a * b;
   }
   const sameThing2 = function (a, b) {
-    return a * b
-  }
+    return a * b;
+  };
 
-  const result = sameThing(2, 6)
-  console.log('result', result)
-  const result2 = sameThing2(2, 6)
-  console.log('result2', result2)
+  const result = sameThing(2, 6);
+  console.log('result', result);
+  const result2 = sameThing2(2, 6);
+  console.log('result2', result2);
 
   //state for Router
-  const [page, setPage] = useState('home')
+  const [page, setPage] = useState('home');
 
   // const toPage = (page) => (event) => {
   //   event.preventDefault()
@@ -151,9 +152,16 @@ const App = () => {
     backgroundColor: '#FFDDC7',
     fontSize: 20,
     fontWeight: 'bold',
-  }
+  };
   return (
     <>
+      <h2>Useref example</h2>
+      <UseRefExample />
+      <br />
+      <br />
+      <br />
+      <br />
+
       {tTestMapResult}
       <i>Self-made routing</i>
       {/* <div>
@@ -195,20 +203,20 @@ const App = () => {
       <i>React-Router-Dom</i>
       <Router>
         <div>
-          <Link to='/' style={navItemStyle}>
+          <Link to="/" style={navItemStyle}>
             home
           </Link>{' '}
-          <Link to='/notes' style={navItemStyle}>
+          <Link to="/notes" style={navItemStyle}>
             notes
           </Link>{' '}
-          <Link to='/users' style={navItemStyle}>
+          <Link to="/users" style={navItemStyle}>
             users
           </Link>
         </div>
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/notes' element={<Notes />} />
-          <Route path='/users' element={<Users />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/notes" element={<Notes />} />
+          <Route path="/users" element={<Users />} />
         </Routes>
       </Router>
 
@@ -217,8 +225,8 @@ const App = () => {
         {a} plus {b} is {a + b}
       </p>
       <h1>Greetings</h1>
-      <Hello name='Alicia' />
-      <Hello name='Bill' age={24 + 100} />
+      <Hello name="Alicia" />
+      <Hello name="Bill" age={24 + 100} />
       <Hello name={name} age={age} />
       <Footer />
       <br />
@@ -237,7 +245,7 @@ const App = () => {
         exercises3={exercises3}
       />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
