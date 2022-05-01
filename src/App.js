@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom'
+
 const Hello = (props) => {
   return (
     <div>
@@ -76,6 +77,7 @@ const Users = () => (
     <h2>Users </h2>
   </div>
 )
+/*********************** Starting Point ***********************/
 const App = () => {
   const now = new Date()
   const a = 10
@@ -134,29 +136,77 @@ const App = () => {
   //state for Router
   const [page, setPage] = useState('home')
 
-  // const toPage = (page) => (event) => {
-  //   event.preventDefault()
-  //   setPage(page)
-  // }
-  // const content = () => {
-  //   if (page === 'home') {
-  //     return <Home />
-  //   } else if (page === 'notes') {
-  //     return <Notes />
-  //   } else if (page === 'users') {
-  //     return <Users />
-  //   }
-  // }
+  const toPage = (page) => (event) => {
+    event.preventDefault()
+    setPage(page)
+  }
+  const content = () => {
+    if (page === 'home') {
+      return <Home />
+    } else if (page === 'notes') {
+      return <Notes />
+    } else if (page === 'users') {
+      return <Users />
+    }
+  }
   const navItemStyle = {
     backgroundColor: '#FFDDC7',
     fontSize: 20,
     fontWeight: 'bold',
   }
+  const [counting, setCounting] = useState(0)
+  useEffect(() => {
+    document.title = `Clicked ${counting} times!!!`
+  }, [counting, page])
+  // Button for useEffect
+  const Button = () => {
+    return (
+      <button
+        onClick={() => setCounting(counting + 1)}
+        style={{
+          backgroundColor: '#aeffda',
+          border: '5px solid #000',
+          height: 50,
+          width: 200,
+          fontSize: 20,
+        }}
+      >
+        {counting} times
+      </button>
+    )
+  }
+  //Button for useRef
+  // useEffect(() => {
+  //   if (reffff) {
+  //     //console.log('ref test; ', reffff)
+  //     reffff.current.click()
+  //   }
+  // })
+  const reffff = useRef(null)
+  const AndraButton = () => {
+    return (
+      <button onClick={() => alert('Clicked srsly!')} ref={reffff}>
+        Click here
+      </button>
+    )
+  }
+
+  //ex. useRef
+  const inputElement = useRef(null)
+  const onButtonClick = () => {
+    inputElement.current.blur()
+  }
+
   return (
     <>
+      <Button />
+      <AndraButton />
+      {/* Ex. useRef */}
+      <input ref={inputElement} type='text' />
+      <button onClick={onButtonClick}>Focus the input</button>
       {tTestMapResult}
       <i>Self-made routing</i>
-      {/* <div>
+      <div>
         <a
           href=''
           onClick={toPage('home')}
@@ -190,8 +240,8 @@ const App = () => {
         >
           users
         </a>
-      </div> */}
-      {/* {content()} */}
+      </div>
+      {content()}
       <i>React-Router-Dom</i>
       <Router>
         <div>
