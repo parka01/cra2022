@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
 import UseRefExample from './UseRefExample';
 const Hello = (props) => {
@@ -20,7 +20,6 @@ const Footer = () => {
     );
 };
 const Header = (props) => {
-    console.log('props', props);
     return (
         <span
             style={{
@@ -34,7 +33,6 @@ const Header = (props) => {
     );
 };
 const Content = (props) => {
-    console.log('content props: ', props);
     return (
         <>
             <Part part={props.part1} exercises={props.exercises1} />
@@ -43,6 +41,7 @@ const Content = (props) => {
         </>
     );
 };
+
 const Part = (props) => {
     return (
         <p>
@@ -196,7 +195,32 @@ const App = () => {
     const onButtonClick = () => {
         inputElement.current.blur();
     };
-
+    // ############### ex1.3 6/13###############
+    const courseNew = 'New half Stack application development New';
+    const partsNew = [
+        { name: 'New Fundamentals of React', exercises: 10 },
+        { name: 'New Using props to pass data', exercises: 7 },
+        { name: 'New State of a component', exercises: 14 },
+    ];
+    const ContentNew = (props) => {
+        return (
+            <>
+                {props.parts.map((element) => {
+                    return <Part part={element.name} exercises={element.exercises} />;
+                })}
+            </>
+        );
+    };
+    const TotalNew = (props) => {
+        return (
+            <div>
+                <p>
+                    Number of exercises
+                    {props.parts.exercises[0] + props.parts.exercises[1] + props.parts.exercises[2]}
+                </p>
+            </div>
+        );
+    };
     return (
         <>
             <Button />
@@ -289,6 +313,11 @@ const App = () => {
                 exercises3={exercises3}
             />
             <Total exercises1={exercises1} exercises2={exercises2} exercises3={exercises3} />
+            <h1>hi</h1>
+            {/* // ############### ex1.3 6/13############### */}
+            <Header course={courseNew} />
+            <ContentNew parts={partsNew} />
+            <TotalNew parts={partsNew} />
         </>
     );
 };
